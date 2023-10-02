@@ -1,11 +1,10 @@
 {
   "name": "prettier-plugin-fort-imports",
-  "type": "module",
-  "version": "0.1.0",
-  "main": "lib/index.ts",
+  "version": "0.3.0",
+  "main": "lib/index.js",
   "author": "Evandro Junior <ecsb.junior@gmail.com>",
   "scripts": {
-    "esbuild": "esbuild src/** --outdir=lib"
+    "esbuild": "esbuild src/** --format=cjs --outdir=lib"
   },
   "dependencies": {
     "@swc/core": "^1.3.91",
