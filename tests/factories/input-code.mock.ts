@@ -2,9 +2,9 @@ export const inputCodeMock = /*ts*/ `
   import { states } from "./states";
   import { neighborhoods } from './neighborhoods';
   import { neighbor } from './neighbor';
+  import { type sort, foo, type bar } from '@types/all';
   import { state } from './state';
-  import { type } from '@types/type';
-  import { sort, foo, bar } from '@types/all';
+  import type { type } from '@types/type';
 
           console.log('program');
 

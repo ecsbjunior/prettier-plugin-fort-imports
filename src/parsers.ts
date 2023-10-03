@@ -1,5 +1,5 @@
 import { ParserOptions } from 'prettier';
-import { Preprocessor } from './preprocessor';
+import { Preprocessor } from './babel/preprocessor';
 import { parsers as tsParsers } from 'prettier/parser-typescript';
 
 const preprocessor = new Preprocessor();

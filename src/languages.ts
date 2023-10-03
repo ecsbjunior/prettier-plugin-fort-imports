@@ -1,4 +1,4 @@
-import type { SupportLanguage } from 'prettier';
+import { SupportLanguage } from 'prettier';
 
 export const languages: SupportLanguage[] = [
   {

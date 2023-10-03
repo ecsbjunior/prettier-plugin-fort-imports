@@ -4,13 +4,17 @@
   "main": "lib/index.js",
   "author": "Evandro Junior <ecsb.junior@gmail.com>",
   "scripts": {
-    "esbuild": "esbuild src/** --format=cjs --outdir=lib"
+    "esbuild": "esbuild `find src \\( -name '*.ts' \\)` --format=cjs --outdir=lib"
   },
   "dependencies": {
+    "@babel/generator": "^7.23.0",
+    "@babel/parser": "^7.23.0",
+    "@babel/types": "^7.23.0",
     "@swc/core": "^1.3.91",
     "prettier": "^3.0.3"
   },
   "devDependencies": {
+    "@types/babel__generator": "^7.6.5",
     "bun-types": "latest",
     "esbuild": "^0.19.4",
     "prettier-plugin-fort-imports": "^0.3.2"

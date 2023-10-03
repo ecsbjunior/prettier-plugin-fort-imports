@@ -1,9 +1,9 @@
 export const outputCodeMock = /*ts*/ `import { state } from './state';
 import { states } from './states';
-import { type } from '@types/type';
 import { neighbor } from './neighbor';
-import { sort, foo, bar } from '@types/all';
+import type { type } from '@types/type';
 import { neighborhoods } from './neighborhoods';
+import { type sort, foo, type bar } from '@types/all';
 
 console.log('program');
 
