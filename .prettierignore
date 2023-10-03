@@ -1,0 +1,10 @@
+node_modules/
+lib/
+.vscode/
+
+.gitignore
+.npmignore
+.prettierrc
+package.json
+tsconfig.json
+README.md

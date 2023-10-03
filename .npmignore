@@ -1,6 +1,9 @@
 src/
 tests/
 
+.env
+.gitignore
+.prettierignore
+.prettierrc.json
 bun.lockb
 tsconfig.json
-.gitignore

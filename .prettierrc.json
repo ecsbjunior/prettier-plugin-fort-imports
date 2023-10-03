@@ -5,7 +5,7 @@
   "printWidth": 120,
   "bracketSpacing": true,
   "plugins": ["prettier-plugin-fort-imports"],
-  "arrowParens": "avoid",
+  "arrowParens": "always",
   "trailingComma": "all",
   "endOfLine": "lf"
 }

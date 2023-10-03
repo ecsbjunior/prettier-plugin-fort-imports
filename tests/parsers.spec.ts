@@ -1,9 +1,9 @@
 import prettier from 'prettier';
 import { describe, expect, it } from 'bun:test';
-const prettierConfig = require('../.prettierrc.json');
-
 import { inputCodeMock } from './factories/input-code.mock';
 import { outputCodeMock } from './factories/output-code.mock';
+
+const prettierConfig = require('../.prettierrc.json');
 
 describe('prettier plugin test', () => {
   it('should format code', async () => {

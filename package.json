@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-fort-imports",
-  "version": "0.3.0",
+  "version": "0.3.3",
   "main": "lib/index.js",
   "author": "Evandro Junior <ecsb.junior@gmail.com>",
   "scripts": {
@@ -12,7 +12,8 @@
   },
   "devDependencies": {
     "bun-types": "latest",
-    "esbuild": "^0.19.4"
+    "esbuild": "^0.19.4",
+    "prettier-plugin-fort-imports": "^0.3.2"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
