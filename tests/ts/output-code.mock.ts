@@ -1,9 +1,13 @@
-export const outputCodeMock = /*ts*/ `import { state } from './state';
+export const tsOutputCodeMock = /*ts*/ `import eva from './eva';
+import { state } from './state';
 import { states } from './states';
 import { neighbor } from './neighbor';
 import type { type } from '@types/type';
 import { neighborhoods } from './neighborhoods';
-import { type sort, foo, type bar } from '@types/all';
+import { foo, type bar, type sort } from '@types/all';
+import { Prettier, PrettierOptions } from '@plugins/prettier';
+
+//comment
 
 console.log('program');
 

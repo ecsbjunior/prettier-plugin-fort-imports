@@ -1,9 +1,9 @@
-import { file } from '@babel/types';
 import { ParserOptions } from 'prettier';
 import generator from '@babel/generator';
+import { ParseResult } from '@babel/parser';
 import { parse as parser } from '@babel/parser';
-import type { ParseResult } from '@babel/parser';
-import type { File, ImportDeclaration } from '@babel/types';
+import { File, ImportDeclaration } from '@babel/types';
+import { ImportDefaultSpecifier, ImportNamespaceSpecifier, ImportSpecifier, file } from '@babel/types';
 
 export class Preprocessor {
   constructor() {}
@@ -27,16 +27,30 @@ export class Preprocessor {
   #getAST(sourceCode: string) {
     return parser(sourceCode, {
       sourceType: 'module',
-      plugins: ['typescript', 'decorators'],
+      plugins: ['typescript', 'decorators', 'jsx'],
     });
   }
 
   #extractImports(AST: ParseResult<File>) {
-    return AST.program.body.filter((node) => node.type === 'ImportDeclaration') as ImportDeclaration[];
+    const imports = AST.program.body.filter((node) => node.type === 'ImportDeclaration') as ImportDeclaration[];
+
+    imports.forEach((x) => delete x.trailingComments);
+
+    return imports;
   }
 
   #sortImports(imports: ImportDeclaration[]) {
     imports.sort((a, b) => {
+      const aLength = (a.end ?? 0) - (a.start ?? 0);
+      const bLength = (b.end ?? 0) - (b.start ?? 0);
+      return aLength - bLength;
+    });
+
+    imports.forEach((x) => this.#sortImportSpecifiers(x.specifiers));
+  }
+
+  #sortImportSpecifiers(specifiers: (ImportDefaultSpecifier | ImportNamespaceSpecifier | ImportSpecifier)[]) {
+    specifiers.sort((a, b) => {
       const aLength = (a.end ?? 0) - (a.start ?? 0);
       const bLength = (b.end ?? 0) - (b.start ?? 0);
 
