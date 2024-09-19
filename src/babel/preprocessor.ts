@@ -1,3 +1,4 @@
+// import util from 'node:util';
 import { ParserOptions } from 'prettier';
 import generator from '@babel/generator';
 import { ParseResult } from '@babel/parser';
@@ -15,7 +16,8 @@ export class Preprocessor {
 
     this.#sortImports(imports);
 
-    const codeWithoutImports = this.#removeImports(sourceCode, imports);
+    let codeWithoutImports = this.#removeImports(sourceCode, imports);
+    codeWithoutImports = this.#removeUseClient(codeWithoutImports);
 
     const { code } = this.#generateCode(AST, imports);
 
@@ -27,7 +29,7 @@ export class Preprocessor {
   #getAST(sourceCode: string) {
     return parser(sourceCode, {
       sourceType: 'module',
-      plugins: ['typescript', 'decorators', 'jsx'],
+      plugins: ['typescript', 'decorators-legacy', 'jsx'],
     });
   }
 
@@ -54,8 +56,19 @@ export class Preprocessor {
       const aLength = (a.end ?? 0) - (a.start ?? 0);
       const bLength = (b.end ?? 0) - (b.start ?? 0);
 
-      return aLength - bLength;
+      let diff = aLength - bLength;
+
+      if (diff === 0) {
+        diff = a.local.name.localeCompare(b.local.name);
+      }
+
+      return diff;
     });
+  }
+
+  #removeUseClient(codeWithoutImports: string) {
+    const codeWithoutUseClient = codeWithoutImports.replace(/('use client';*)/, '');
+    return codeWithoutUseClient;
   }
 
   #removeImports(sourceCode: string, nodes: ImportDeclaration[]) {
@@ -81,7 +94,6 @@ export class Preprocessor {
       end: AST.program.end,
       start: AST.program.start,
       sourceType: AST.program.sourceType,
-      sourceFile: AST.program.sourceFile,
       directives: AST.program.directives,
       interpreter: AST.program.interpreter,
       innerComments: AST.program.innerComments,

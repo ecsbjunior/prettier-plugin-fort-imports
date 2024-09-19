@@ -1,4 +1,6 @@
 export const tsxInputCodeMock = /*ts*/ `
+  'use client'
+
   import { states } from "./states";
   import { PrettierOptions, Prettier } from '@plugins/prettier'
   import { neighborhoods } from './neighborhoods';

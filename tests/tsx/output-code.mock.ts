@@ -1,4 +1,6 @@
-export const tsxOutputCodeMock = /*ts*/ `import eva from './eva';
+export const tsxOutputCodeMock = /*ts*/ `'use client';
+
+import eva from './eva';
 import { state } from './state';
 import { states } from './states';
 import { neighbor } from './neighbor';

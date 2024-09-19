@@ -5,7 +5,7 @@ import { neighbor } from './neighbor';
 import type { type } from '@types/type';
 import { neighborhoods } from './neighborhoods';
 import { foo, type bar, type sort } from '@types/all';
-import { Prettier, PrettierOptions } from '@plugins/prettier';
+import { Prettier1, Prettier2, PrettierOptions } from '@plugins/prettier';
 
 //comment
 
@@ -15,7 +15,10 @@ console.log('program2');
 
 @DecoratorTeste()
 export class Teste {
-  constructor(private readonly state: State) {
+  constructor(
+    @PropertyDecorator()
+    private readonly state: State,
+  ) {
     console.log('teste');
   }
 }

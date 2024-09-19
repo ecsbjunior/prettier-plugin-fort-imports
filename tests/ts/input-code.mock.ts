@@ -1,6 +1,6 @@
 export const tsInputCodeMock = /*ts*/ `
   import { states } from "./states";
-  import { PrettierOptions, Prettier } from '@plugins/prettier'
+  import { PrettierOptions, Prettier2, Prettier1 } from '@plugins/prettier'
   import { neighborhoods } from './neighborhoods';
   import eva from './eva';
   import { neighbor } from './neighbor';
@@ -18,6 +18,7 @@ export const tsInputCodeMock = /*ts*/ `
   export class
   Teste {
     constructor(
+      @PropertyDecorator()
       private readonly state: State,
     ) {
       
