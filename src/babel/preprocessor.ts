@@ -16,8 +16,11 @@ export class Preprocessor {
 
     this.#sortImports(imports);
 
-    let codeWithoutImports = this.#removeImports(sourceCode, imports);
+    let codeWithoutImports = '';
+
+    codeWithoutImports = this.#removeImports(sourceCode, imports);
     codeWithoutImports = this.#removeUseClient(codeWithoutImports);
+    codeWithoutImports = this.#removeUseServer(codeWithoutImports);
 
     const { code } = this.#generateCode(AST, imports);
 
@@ -69,6 +72,11 @@ export class Preprocessor {
   #removeUseClient(codeWithoutImports: string) {
     const codeWithoutUseClient = codeWithoutImports.replace(/('use client';*)/, '');
     return codeWithoutUseClient;
+  }
+
+  #removeUseServer(codeWithoutImports: string) {
+    const codeWithoutUseServer = codeWithoutImports.replace(/('use server';*)/, '');
+    return codeWithoutUseServer;
   }
 
   #removeImports(sourceCode: string, nodes: ImportDeclaration[]) {
